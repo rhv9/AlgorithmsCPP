@@ -32,7 +32,6 @@ int main()
     {
         Timer timer;
         result = maxSubSequenceN3(input);
-    
     }
     std::cout << "Hello World!" << std::endl;
     std::cout << result << std::endl;
