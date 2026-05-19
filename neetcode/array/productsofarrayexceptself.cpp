@@ -15,9 +15,28 @@ public:
         results.reserve(nums.size());
 
         int product = 1;
-
+        int zeroPos = -1;
         for (int i = 1; i < nums.size(); ++i)
-            product *= nums[i];
+        {
+            if (nums[i] == 0)
+            {
+                // all values must be zero
+                if (zeroPos != -1)
+                    return results;
+
+                for (int i = 0; i < nums.size(); ++i)
+                    results.push_back(0);
+                zeroPos = i;
+            }
+            else 
+                product *= nums[i];
+        }
+
+        if (zeroPos != -1)
+        {
+            results[zeroPos] = product * nums[0];
+            return results;
+        }
 
         results.push_back(product);
 
