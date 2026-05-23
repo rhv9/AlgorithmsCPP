@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stack>
 #include <string>
+#include <queue>
 
 #include <util/timer.h>
 using namespace std;
@@ -18,23 +19,24 @@ struct TreeNode {
 
 class Solution {
 public:
-    int diameterOfBinaryTree(TreeNode* root) 
+    bool isBalanced(TreeNode* root) 
     {
-        int result = 0;
-        dfs(root, result);
-
-        return result;
+        bool valid = true;
+        dfs(root, valid);
+        return valid;
     }
 
-    int dfs(TreeNode* root, int& result)
+    int dfs(TreeNode* root, bool& valid) 
     {
-        if (root == nullptr)
+        if (root == nullptr || !valid)
             return 0;
 
-        int left = dfs(root->left, result);
-        int right = dfs(root->right, result);
+        int left = dfs(root->left, valid);
+        int right = dfs(root->right, valid);
 
-        result = std::max(result, left + right);
-        return std::max(left, right) + 1;
+        if (std::abs(left - right) > 1)
+            valid = false;
+
+        return 1 + std::max(left, right);
     }
 };
