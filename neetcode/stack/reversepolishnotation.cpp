@@ -60,12 +60,11 @@ public:
 int main()
 {
 
+    int result = -1;
+    std::vector<std::string> tokens {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
     {
         Timer timer;
-        std::vector<std::string> tokens {"10","6","9","3","+","-11","*","/","*","17","+","5","+"};
-        int result = Solution().evalRPN(tokens);
-
-        std::cout << result << std::endl;
-
+        result = Solution().evalRPN(tokens);
     }
+    std::cout << result << std::endl;
 }
