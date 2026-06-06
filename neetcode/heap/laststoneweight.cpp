@@ -88,6 +88,11 @@ class MaxHeap
         r = temp;
     }
 
+    void popLastChild()
+    {
+        heap.pop_back();
+    }
+
     int size() { return heap.size(); }
 
 private:
