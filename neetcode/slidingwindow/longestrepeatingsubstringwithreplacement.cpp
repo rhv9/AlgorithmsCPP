@@ -22,32 +22,21 @@ public:
         int longest = 0;
         for (char c : uniqueChars)
         {
-            int left = 0;
-            int right = 0;
-            std::queue<int> replaceIndices;
+            int left = 0, right = 0, replacedCount = 0;
             while (right < s.length())
             {
                 if (s.at(right) == c)
                     ++right;
                 else
                 {
-                    // we have replacements
-                    if (k == 0)
+                    if (replacedCount < k)
+                        ++replacedCount;
+                    else
                     {
-                        left = ++right;
-                        continue;
+                        while (s.at(left) == c)
+                            ++left;
+                        ++left;
                     }
-                    else if (replaceIndices.size() == k)
-                    {
-                        // not enough replacements
-                        // remove earliest replacement
-                        int earliestReplaceIndex = replaceIndices.front();
-                        left = earliestReplaceIndex + 1;
-                        
-                        replaceIndices.pop();
-                    }
-                    // add new replacement
-                    replaceIndices.push(right);
                     ++right;
                 }
                 longest = std::max(longest, right - left);
