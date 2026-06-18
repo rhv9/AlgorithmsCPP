@@ -1,6 +1,12 @@
 #include <iostream>
 #include <vector>
 #include <chrono>
+#include <vector>
+#include <stdint.h>
+#include <stack>
+#include <string>
+#include <queue>
+#include <unordered_map>
 
 template <typename T>
 void printVector(const std::vector<T>& vec)
