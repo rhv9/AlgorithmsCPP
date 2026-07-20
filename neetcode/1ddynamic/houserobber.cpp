@@ -63,7 +63,7 @@ public:
             neighbourTwo = neighbourOne;
             neighbourOne = current;
         }
-        return neighbourTwo;
+        return neighbourOne;
     }
 };
 
